@@ -40,11 +40,13 @@ class SpiralMemory(object):
     def get_new_count(self):
         new_count = 0
         for x_loc in range(self.location[1]-1, self.location[1]+2):
-            for y_loc in range(self.location[0]-1, self.location[0]+2):
-                try:
-                    new_count += self.spiral[y_loc][x_loc]
-                except IndexError:
-                    pass
+            if x_loc > -1:
+                for y_loc in range(self.location[0]-1, self.location[0]+2):
+                    if y_loc > -1:
+                        try:
+                            new_count += self.spiral[y_loc][x_loc]
+                        except IndexError:
+                            pass
 
         return new_count
 
